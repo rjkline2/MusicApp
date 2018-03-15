@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MusicApp.Models.Artist>
+
+@{
+    ViewBag.Title = "Artist Index";
+}
+
+<h2>Artist Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtistName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BornDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DieDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtistBio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtistPic)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtistName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BornDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DieDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtistBio)
+        </td>
+        <td>
+            <img class="artistpix" src="@Html.DisplayFor(modelItem => item.ArtistPic)"/>
+                 </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArtistID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArtistID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArtistID })
+        </td>
+    </tr>
+}
+
+</table>
